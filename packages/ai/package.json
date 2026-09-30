@@ -1,0 +1,19 @@
+{
+  "name": "@atlas/ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Atlas model router, typed tool registry/executor and chat orchestration",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@atlas/permissions": "workspace:*",
+    "@atlas/shared": "workspace:*",
+    "ai": "^7.0.123",
+    "zod": "^4.6.5"
+  }
+}

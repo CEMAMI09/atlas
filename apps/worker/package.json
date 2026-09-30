@@ -1,0 +1,23 @@
+{
+  "name": "@atlas/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Atlas background worker: sync, simulators, retention, pipelines",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/main.ts",
+    "start": "node dist/main.js",
+    "build": "node build.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@atlas/config": "workspace:*",
+    "@atlas/core": "workspace:*",
+    "@atlas/shared": "workspace:*",
+    "@node-rs/argon2": "^2.2.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "pino-pretty": "^13.1.3"
+  }
+}

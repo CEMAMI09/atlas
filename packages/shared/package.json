@@ -1,0 +1,16 @@
+{
+  "name": "@atlas/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser-safe schemas, types and utilities shared by every Atlas package",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  }
+}

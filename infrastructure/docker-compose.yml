@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg18
+    env_file:
+      - ../.env.local
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-atlas}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-atlas}
+    volumes:
+      - atlas-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  atlas-api:
+    build:
+      context: ..
+      dockerfile: infrastructure/docker/Dockerfile
+      args:
+        APP: api
+    env_file:
+      - ../.env.local
+    environment:
+      NODE_ENV: production
+      ATLAS_SERVE_WEB: "true"
+    depends_on:
+      - postgres
+    ports:
+      - "127.0.0.1:4000:4000"
+    restart: unless-stopped
+
+  atlas-worker:
+    build:
+      context: ..
+      dockerfile: infrastructure/docker/Dockerfile
+      args:
+        APP: worker
+    env_file:
+      - ../.env.local
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    profiles: ["mqtt"]
+    ports:
+      - "127.0.0.1:1883:1883"
+    restart: unless-stopped
+
+volumes:
+  atlas-postgres:

@@ -1,0 +1,17 @@
+{
+  "name": "@atlas/config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Server-only environment validation and secret registry. Never import from browser code.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@atlas/shared": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

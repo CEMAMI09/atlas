@@ -1,0 +1,1 @@
+export { publicRuntimeInfo } from '../runtime'

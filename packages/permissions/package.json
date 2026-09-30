@@ -1,0 +1,17 @@
+{
+  "name": "@atlas/permissions",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Risk levels, permission engine, confirmation policy and secret redaction",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@atlas/shared": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}
